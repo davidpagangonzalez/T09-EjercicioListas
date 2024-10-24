@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">TareasV01</string>
+    <string name="prioridad">Prioridad</string>
+    <string name="imagen_a_cambiar">Imagen a cambiar</string>
+    <string name="abierta">Abierta</string>
+    <string name="en_curso">En Curso</string>
+    <string name="categor_a">Categoría</string>
+    <string name="estado_de_pago">Estado de pago</string>
+    <string name="estado_de_la_tarea">Estado de la tarea:</string>
+    <string name="est_pagado">Está pagado</string>
+    <string name="valoraci_n_cliente">Valoración cliente:</string>
+    <string name="t_cnico">Técnico</string>
+    <string name="descripcion">Descripcion</string>
+    <string-array name="prioridades">
+        <item>Alta</item>
+        <item>Media</item>
+        <item>Baja</item>
+    </string-array>
+    <string-array name="estados">
+        <item>Abierta</item>
+        <item>En Curso</item>
+        <item>Cerrada</item>
+    </string-array>
+    <string-array name="categoria">
+        <item>Reparacion</item>
+        <item>Instalacion</item>
+        <item>Mantenimiento</item>
+        <item>Comercial</item>
+        <item>Otros</item>
+    </string-array>
+</resources>
+
