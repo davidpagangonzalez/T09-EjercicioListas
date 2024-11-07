@@ -1,6 +1,5 @@
-package net.iessochoa.davidpagan.tareasv01.ui.theme
+package net.iessochoa.davidpagan.tareasv01.ui.theme.theme.utils
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

@@ -1,4 +1,4 @@
-package net.iessochoa.davidpagan.tareasv01.ui.theme
+package net.iessochoa.davidpagan.tareasv01.ui.theme.theme.utils
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
