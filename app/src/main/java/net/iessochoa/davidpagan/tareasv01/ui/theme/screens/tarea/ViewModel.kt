@@ -30,7 +30,22 @@ class TareaViewModel(application: Application): AndroidViewModel(application){
 
         _uiStateTarea.value = _uiStateTarea.value.copy(
             prioridad = nuevaPrioridad, colorFondo = colorFondo)
+    }
+
+    fun onTecnicoValueChange(nuevoTecnico: String) {
+        _uiStateTarea.value = _uiStateTarea.value.copy(
+            technicianName = nuevoTecnico,
+            esFormularioValido = nuevoTecnico.isNotBlank() && _uiStateTarea.value.description.isNotBlank())
 
     }
+
+    fun onDescripcionValueChange(nuevaDescripcion: String) {
+        _uiStateTarea.value = _uiStateTarea.value.copy(
+            description = nuevaDescripcion,
+            esFormularioValido = nuevaDescripcion.isNotBlank() && _uiStateTarea.value.description.isNotBlank())
+    }
+
+
+
 
 }

@@ -14,6 +14,7 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -46,14 +47,13 @@ fun TaskScreen(
     modifier: Modifier = Modifier
 ) {
 
-
     val uiState by viewModel.uiStateTarea.collectAsState()
 
     /*
     val listaPrioridad = stringArrayResource(id = R.array.prioridades).toList()
     var selectedPriority by remember { mutableStateOf(listaPrioridad[2]) }
+    */
 
- */
     val listaCategoria = stringArrayResource(id = R.array.categoria).toList()
     var selectedCategory by remember { mutableStateOf(listaCategoria[0]) }
 
@@ -69,6 +69,7 @@ fun TaskScreen(
 
     //val colorTarea = if (selectedPriority == listaPrioridad[0]) ColorPrioridadAlta else Color.White
 
+    val imageVector = Icons.Default.Star
     val iconEstadoTarea =
         when (taskStatus) {
             listaEstados[0] -> Icons.Default.ThumbUp
@@ -96,11 +97,6 @@ fun TaskScreen(
                     .fillMaxSize()
                     .padding(16.dp),
             ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize(),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -150,9 +146,9 @@ fun TaskScreen(
                         Icon(
                             imageVector = iconEstadoTarea,
                             contentDescription = "Estado de la tarea",
-
                             )
                     }
+
                     // Estado de la tarea
                     RowRadioButtonCompose(
                         listaOpciones = stringArrayResource(id = R.array.estados),
@@ -178,6 +174,7 @@ fun TaskScreen(
         }
 
          */
+                    imageVector
                     // Campo para técnico
                     EditOutlinedTextField(
                         label = stringResource(R.string.t_cnico),
@@ -198,7 +195,7 @@ fun TaskScreen(
             }
         }
     }
-}
+
 
 
 @Preview(showBackground = true)

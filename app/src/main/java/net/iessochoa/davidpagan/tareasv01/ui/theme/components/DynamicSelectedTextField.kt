@@ -17,12 +17,13 @@ import androidx.compose.ui.Modifier
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+
 fun DynamicSelectTextField(
     selectedValue: String,
     options: List<String>,
     label: String,
     onValueChangedEvent: (String) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     //Permite saber si el menú desplegable está abierto. Inicialmente está cerrado
     var expanded by remember { mutableStateOf(false) }
