@@ -45,7 +45,25 @@ class TareaViewModel(application: Application): AndroidViewModel(application){
             esFormularioValido = nuevaDescripcion.isNotBlank() && _uiStateTarea.value.description.isNotBlank())
     }
 
+    //muestra el dialogo
+    fun onGuardar() {
+        _uiStateTarea.value = _uiStateTarea.value.copy(
+            mostrarDialogo = true
+        )
+    }
 
+    //guardará los cambios, por el momento solo cierra el dialogo
+    fun onConfirmarDialogoGuardar() {
+        _uiStateTarea.value = _uiStateTarea.value.copy(
+            mostrarDialogo = false
+        )
+    }
 
+    //cierra el dialogo
+    fun onCancelarDialogoGuardar() {
+        _uiStateTarea.value = _uiStateTarea.value.copy(
+            mostrarDialogo = false
+        )
+    }
 
 }
