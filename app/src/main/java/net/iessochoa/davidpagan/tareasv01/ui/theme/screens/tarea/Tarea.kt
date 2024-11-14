@@ -93,7 +93,7 @@ fun TaskScreen(
             listaEstados[1] -> Icons.Default.ShoppingCart
             else -> Icons.Default.Lock
         }
-
+//f
     var icon =
         when {
             isPaid -> Icons.Default.Check
