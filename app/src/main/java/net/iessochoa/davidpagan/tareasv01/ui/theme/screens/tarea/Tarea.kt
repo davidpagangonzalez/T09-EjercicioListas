@@ -52,6 +52,7 @@ import net.iessochoa.davidpagan.tareasv01.ui.theme.theme.utils.TareasV01Theme
 import net.iessochoa.davidpagan.tareasv01.ui.theme.components.DynamicSelectTextField
 import net.iessochoa.davidpagan.tareasv01.ui.theme.components.RowRadioButtonCompose
 import net.iessochoa.davidpagan.tareasv01.ui.theme.components.EditOutlinedTextField
+import net.iessochoa.davidpagan.tareasv01.ui.theme.components.RatingBar
 
 
 @Composable
@@ -193,6 +194,12 @@ fun TaskScreen(
                         onOptionSelected = { taskStatus = it }
                     )
 
+                    // Valoración de cliente
+                    RatingBar(
+                        maxRating = 5,
+                        currentRating = rating,
+                        onRatingChanged = { rating = it }
+                    )
                     // Valoración cliente
 
                     Text(stringResource(R.string.valoraci_n_cliente))
