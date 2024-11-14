@@ -12,9 +12,9 @@
     <string name="t_cnico">Técnico</string>
     <string name="descripcion">Descripcion</string>
     <string-array name="prioridades">
-        <item>Alta</item>
-        <item>Media</item>
         <item>Baja</item>
+        <item>Media</item>
+        <item>Alta</item>
     </string-array>
     <string-array name="estados">
         <item>Abierta</item>
