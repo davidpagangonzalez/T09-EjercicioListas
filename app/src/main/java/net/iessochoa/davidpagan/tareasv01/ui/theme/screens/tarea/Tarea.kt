@@ -195,11 +195,13 @@ fun TaskScreen(
                     )
 
                     // Valoración de cliente
+
                     RatingBar(
                         maxRating = 5,
                         currentRating = rating,
                         onRatingChanged = { rating = it }
                     )
+
                     // Valoración cliente
 
                     Text(stringResource(R.string.valoraci_n_cliente))
@@ -209,7 +211,8 @@ fun TaskScreen(
                         label = stringResource(R.string.t_cnico),
                         keyboardOptions = KeyboardOptions.Default,
                         value = technicianName,
-                        onValueChanged = { viewModel.onTecnicoValueChange(it) },
+                        onValueChanged = { technicianName = it
+                            viewModel.onTecnicoValueChange(it) },
                         modifier = Modifier.fillMaxWidth()
                     )
                     // Campo para descripción
@@ -217,7 +220,8 @@ fun TaskScreen(
                         label = stringResource(R.string.descripcion),
                         keyboardOptions = KeyboardOptions.Default,
                         value = description,
-                        onValueChanged = { viewModel.onDescripcionValueChange(it) },
+                        onValueChanged = { description = it
+                            viewModel.onDescripcionValueChange(it) },
                         modifier = Modifier.fillMaxWidth()
                     )
 
