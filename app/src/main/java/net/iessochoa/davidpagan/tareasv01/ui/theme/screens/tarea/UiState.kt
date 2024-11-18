@@ -12,6 +12,7 @@ data class UiStateTarea(
     val description: String = "",
     val colorFondo: androidx.compose.ui.graphics.Color = androidx.compose.ui.graphics.Color.Transparent,
     val esFormularioValido: Boolean = false,
-    val mostrarDialogo: Boolean = false
+    val mostrarDialogo: Boolean = false,
+    val esTareaNueva: Boolean = false
+)
 
-    )

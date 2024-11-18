@@ -67,5 +67,10 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-
+//Navigation
+    implementation(libs.androidx.navigation.compose)
+// ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.compose.v287)
+//Serializacion
+    implementation(libs.kotlinx.serialization.json)
 }
