@@ -8,23 +8,23 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import net.iessochoa.davidpagan.tareasv01.R
 import net.iessochoa.davidpagan.tareasv01.data.db.entities.Tarea
+import net.iessochoa.davidpagan.tareasv01.data.repository.Repository
 import net.iessochoa.davidpagan.tareasv01.ui.theme.theme.utils.ColorPrioridadAlta
-
-
 
 class TareaViewModel(application: Application): AndroidViewModel(application){
 
     private val context = application.applicationContext
 
     val listaCategoria = context.resources.getStringArray(R.array.categoria).toList()
+
     val listaEstado = context.resources.getStringArray(R.array.estados).toList()
 
     val listaPrioridad = context.resources.getStringArray(R.array.prioridades).toList()
+
     val PRIORIDADALTA = listaPrioridad[2]
 
     private val _uiStateTarea = MutableStateFlow(UiStateTarea(prioridad = listaPrioridad[0]))
     val uiStateTarea: StateFlow<UiStateTarea> = _uiStateTarea.asStateFlow()
-
 
 
     fun OnValueChangedPrioridad(nuevaPrioridad : String){
@@ -70,6 +70,11 @@ class TareaViewModel(application: Application): AndroidViewModel(application){
         _uiStateTarea.value = _uiStateTarea.value.copy(
             mostrarDialogo = false
         )
+    }
+    fun getTarea(id: Long) {
+        tarea = Repository.getTarea(id)
+//si no es nueva inicia la UI con los valores de la tarea
+        if (tarea != null) tareaToUiState(tarea!!)
     }
 
     //tarea

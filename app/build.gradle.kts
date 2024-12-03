@@ -73,4 +73,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose.v287)
 //Serializacion
     implementation(libs.kotlinx.serialization.json)
+    testImplementation(libs.junit)
+    // Enable Navigation
+    implementation(libs.androidx.navigation.compose.v276)
+    implementation(kotlin("script-runtime"))
 }

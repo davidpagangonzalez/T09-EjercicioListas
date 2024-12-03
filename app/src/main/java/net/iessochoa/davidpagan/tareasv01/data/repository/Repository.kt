@@ -3,7 +3,6 @@ package net.iessochoa.davidpagan.tareasv01.data.repository
 import net.iessochoa.davidpagan.tareasv01.data.db.entities.Tarea
 import net.iessochoa.davidpagan.tareasv01.data.tempmodel.TempModelTareas
 
-object Repository {
     object Repository {
         //inicio del objeto singleton
         operator fun invoke() {
@@ -15,4 +14,3 @@ object Repository {
         fun getAllTareas()=TempModelTareas.getAllTareas()
         fun getTarea(id:Long)=TempModelTareas.getTarea(id)
     }
-}

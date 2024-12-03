@@ -14,6 +14,7 @@ class TareasApplication: Application() {
         super.onCreate()
         application = this
         //iniciamos el Repository
-        Repository.Repository()
+        Repository()
+
     }
 }

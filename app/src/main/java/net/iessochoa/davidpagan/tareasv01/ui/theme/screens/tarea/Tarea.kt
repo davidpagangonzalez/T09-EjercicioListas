@@ -30,6 +30,7 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -47,6 +48,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.launch
 import net.iessochoa.davidpagan.tareasv01.R
+import net.iessochoa.davidpagan.tareasv01.data.repository.Repository
+import net.iessochoa.davidpagan.tareasv01.ui.theme.components.AppBar
 import net.iessochoa.davidpagan.tareasv01.ui.theme.components.DialogoDeConfirmacion
 import net.iessochoa.davidpagan.tareasv01.ui.theme.theme.utils.TareasV01Theme
 import net.iessochoa.davidpagan.tareasv01.ui.theme.components.DynamicSelectTextField
@@ -58,8 +61,15 @@ import net.iessochoa.davidpagan.tareasv01.ui.theme.components.RatingBar
 @Composable
 fun TaskScreen(
     viewModel: TareaViewModel = viewModel(),
+    idTarea:Long? = null,
+    onVolver: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
+
+    if (idTarea != null) {
+        viewModel.getTarea(idTarea!!)
+
+    }
 
     val uiState by viewModel.uiStateTarea.collectAsState()
 
@@ -99,6 +109,10 @@ fun TaskScreen(
             isPaid -> Icons.Default.Check
             else -> Icons.Default.Clear
         }
+    AppBar(
+        tituloPantallaActual = 1.toString(),
+        puedeNavegarAtras = true
+    )
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         snackbarHost = { SnackbarHost(snackbarHostState) },
@@ -111,7 +125,6 @@ fun TaskScreen(
                         snackbarHostState.showSnackbar(
                             message = "Rellene todos los campos",
                             duration = SnackbarDuration.Short
-
                         )
                     }
                 }
