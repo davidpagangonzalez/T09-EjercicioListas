@@ -66,15 +66,13 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-//Navigation
-    implementation(libs.androidx.navigation.compose)
-// ViewModel
-    implementation(libs.androidx.lifecycle.viewmodel.compose.v287)
-//Serializacion
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
+
+    // Navigation
+    implementation("androidx.navigation:navigation-compose:2.8.2")
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
+    // Serialización
     implementation(libs.kotlinx.serialization.json)
-    testImplementation(libs.junit)
-    // Enable Navigation
-    implementation(libs.androidx.navigation.compose.v276)
-    implementation(kotlin("script-runtime"))
 }

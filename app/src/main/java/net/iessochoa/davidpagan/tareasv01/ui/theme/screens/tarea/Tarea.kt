@@ -68,11 +68,9 @@ fun TaskScreen(
 
     if (idTarea != null) {
         viewModel.getTarea(idTarea!!)
-
     }
 
     val uiState by viewModel.uiStateTarea.collectAsState()
-
     /*
     val listaPrioridad = stringArrayResource(id = R.array.prioridades).toList()
     var selectedPriority by remember { mutableStateOf(listaPrioridad[2]) }
