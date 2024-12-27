@@ -68,6 +68,7 @@ fun TaskScreen(
 
     if (idTarea != null) {
         viewModel.getTarea(idTarea!!)
+
     }
 
     val uiState by viewModel.uiStateTarea.collectAsState()
@@ -80,17 +81,17 @@ fun TaskScreen(
     val scope = rememberCoroutineScope() // Scope para lanzar corutinas
 
     val listaCategoria = stringArrayResource(id = R.array.categoria).toList()
-    var selectedCategory by remember { mutableStateOf(listaCategoria[0]) }
+    var selectedCategory by remember { mutableStateOf(uiState.categoria) }
 
-    var isPaid by remember { mutableStateOf(false) }
+    var isPaid by remember { mutableStateOf(uiState.isPaid) }
 
     val listaEstados = stringArrayResource(id = R.array.estados).toList()
-    var taskStatus by remember { mutableStateOf(listaEstados[0]) }
+    var taskStatus by remember { mutableStateOf(uiState.estadoTarea) }
 
-    var rating by remember { mutableStateOf(3) } // Valoración de cliente
+    var rating by remember { mutableStateOf(uiState.rating) } // Valoración de cliente
 
-    var technicianName by remember { mutableStateOf("") }
-    var description by remember { mutableStateOf("") }
+    var technicianName by remember { mutableStateOf(uiState.technicianName) }
+    var description by remember { mutableStateOf(viewModel.uiStateTarea) }
 
     //val colorTarea = if (selectedPriority == listaPrioridad[0]) ColorPrioridadAlta else Color.White
 
@@ -114,6 +115,18 @@ fun TaskScreen(
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         snackbarHost = { SnackbarHost(snackbarHostState) },
+        topBar = {
+            AppBar(
+                tituloPantallaActual =
+                if (uiState.esTareaNueva)
+                    "Nueva Tarea"
+                else
+                    "Modificar Tarea",
+
+                puedeNavegarAtras = true,
+                navegaAtras = onVolver
+            )
+        },
         floatingActionButton = {
             FloatingActionButton(onClick = {
                 if (uiState.esFormularioValido)
@@ -127,12 +140,13 @@ fun TaskScreen(
                     }
                 }
             }) {
+
                 Icon(
                     painter = painterResource(android.R.drawable.ic_menu_save),
                     contentDescription = "Guardar"
                 )
             }
-        }
+        },
 
     ) { innerPadding ->
         Surface(
@@ -156,10 +170,10 @@ fun TaskScreen(
                         Column(modifier = Modifier.weight(1F)) {
                             // Categoría
                             DynamicSelectTextField(
-                                selectedValue = selectedCategory,
-                                options = stringArrayResource(id = R.array.categoria).toList(),
+                                selectedValue = uiState.categoria,
+                                options = viewModel.listaCategoria,
                                 label = stringResource(R.string.categor_a),
-                                onValueChangedEvent = { selectedCategory = it }
+                                onValueChangedEvent = { viewModel.onValueChangeCategoria(it) }
                             )
                             // Prioridad
                             DynamicSelectTextField(
@@ -201,16 +215,16 @@ fun TaskScreen(
                     // Estado de la tarea
                     RowRadioButtonCompose(
                         listaOpciones = stringArrayResource(id = R.array.estados),
-                        opcionSeleccionada = taskStatus,
-                        onOptionSelected = { taskStatus = it }
+                        opcionSeleccionada = uiState.estadoTarea,
+                        onOptionSelected = { viewModel.onValueChangeEstado(it) }
                     )
 
                     // Valoración de cliente
 
                     RatingBar(
                         maxRating = 5,
-                        currentRating = rating,
-                        onRatingChanged = { rating = it }
+                        currentRating = uiState.rating,
+                        onRatingChanged = { viewModel.onValueChangeValoracion(it) }
                     )
 
                     // Valoración cliente
@@ -221,18 +235,16 @@ fun TaskScreen(
                     EditOutlinedTextField(
                         label = stringResource(R.string.t_cnico),
                         keyboardOptions = KeyboardOptions.Default,
-                        value = technicianName,
-                        onValueChanged = { technicianName = it
-                            viewModel.onTecnicoValueChange(it) },
+                        value = uiState.technicianName,
+                        onValueChanged = { viewModel.onTecnicoValueChange(it) },
                         modifier = Modifier.fillMaxWidth()
                     )
                     // Campo para descripción
                     EditOutlinedTextField(
                         label = stringResource(R.string.descripcion),
                         keyboardOptions = KeyboardOptions.Default,
-                        value = description,
-                        onValueChanged = { description = it
-                            viewModel.onDescripcionValueChange(it) },
+                        value = uiState.description,
+                        onValueChanged = { viewModel.onDescripcionValueChange(it) },
                         modifier = Modifier.fillMaxWidth()
                     )
 
@@ -255,6 +267,7 @@ fun TaskScreen(
                                     snackbarHostState.showSnackbar(
                                         message = "Tarea guardada",
                                         duration = SnackbarDuration.Short
+
                                     )
 
                                 }
@@ -262,6 +275,7 @@ fun TaskScreen(
                             dialogTitle = "Atención",
                             dialogText = "Desea guardar los cambios?",
                             icon = Icons.Default.Info
+
                         )
                     }
                 }

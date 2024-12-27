@@ -24,8 +24,8 @@ class TareaViewModel(application: Application): AndroidViewModel(application){
     val PRIORIDADALTA = listaPrioridad[2]
 
     private val _uiStateTarea = MutableStateFlow(UiStateTarea(prioridad = listaPrioridad[0]))
-    val uiStateTarea: StateFlow<UiStateTarea> = _uiStateTarea.asStateFlow()
 
+    val uiStateTarea: StateFlow<UiStateTarea> = _uiStateTarea.asStateFlow()
 
     fun OnValueChangedPrioridad(nuevaPrioridad : String){
         val colorFondo : Color
@@ -38,11 +38,26 @@ class TareaViewModel(application: Application): AndroidViewModel(application){
             prioridad = nuevaPrioridad, colorFondo = colorFondo)
     }
 
+    fun onValueChangeEstado(nuevoEstado: String) {
+        _uiStateTarea.value = _uiStateTarea.value.copy( estadoTarea = nuevoEstado)
+    }
+
+    fun onValueChangeCategoria(nuevaCategoria: String) {
+        _uiStateTarea.value = _uiStateTarea.value.copy(categoria = nuevaCategoria)
+    }
+
+    fun onValueChangePagado(nuevoPagado: Boolean) {
+        _uiStateTarea.value = _uiStateTarea.value.copy(isPaid = nuevoPagado)
+    }
+
+    fun onValueChangeValoracion(nuevaValoracion: Int) {
+        _uiStateTarea.value = _uiStateTarea.value.copy(rating = nuevaValoracion)
+    }
+
     fun onTecnicoValueChange(nuevoTecnico: String) {
         _uiStateTarea.value = _uiStateTarea.value.copy(
             technicianName = nuevoTecnico,
-            esFormularioValido = nuevoTecnico.isNotBlank() && _uiStateTarea.value.description.isNotBlank())
-
+            esFormularioValido = nuevoTecnico.isNotBlank() && _uiStateTarea.value.technicianName.isNotBlank())
     }
 
     fun onDescripcionValueChange(nuevaDescripcion: String) {
@@ -60,6 +75,7 @@ class TareaViewModel(application: Application): AndroidViewModel(application){
 
     //guardará los cambios, por el momento solo cierra el dialogo
     fun onConfirmarDialogoGuardar() {
+        guardarTarea()
         _uiStateTarea.value = _uiStateTarea.value.copy(
             mostrarDialogo = false
         )
@@ -71,10 +87,20 @@ class TareaViewModel(application: Application): AndroidViewModel(application){
             mostrarDialogo = false
         )
     }
+
     fun getTarea(id: Long) {
         tarea = Repository.getTarea(id)
 //si no es nueva inicia la UI con los valores de la tarea
         if (tarea != null) tareaToUiState(tarea!!)
+    }
+
+    fun guardarTarea() {
+        val tarea = uiStateToTarea()
+        if (uiStateTarea.value.esTareaNueva){
+            Repository.addTarea(tarea)
+        }else{
+            Repository.addTarea(tarea)
+        }
     }
 
     //tarea

@@ -65,7 +65,7 @@ fun ListaTareasScreen(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = tarea.descripcion,
+                        text = tarea.id.toString() + " - " + tarea.prioridad + " - " + tarea.categoria + " " + tarea.tecnico     ,
                         modifier = Modifier
                             .padding(8.dp)
                             .fillMaxWidth()

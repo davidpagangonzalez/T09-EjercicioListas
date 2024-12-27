@@ -56,9 +56,9 @@ object TempModelTareas {
             "Pepito Grillo"
         )
         val fotos=
-            listOf(R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground,R.drawable.ic_launcher_foreground)
+            listOf(R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background)
         lateinit var tarea: Tarea
-        (1..10).forEach({
+        (1..10).forEach {
             tarea = Tarea(
                 (0..4).random(),
                 (0..2).random(),
@@ -67,10 +67,10 @@ object TempModelTareas {
                 (0..2).random(),
                 (0..5).random(),
                 tecnicos.random(),
-                "tarea $it : Lorem \n ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat ligula et vehicula mattis. \n Etiam tristique ornare lacinia.\nVestibulum lacus magna, dignissim et tempor id, convallis sed augue"
+                "tarea $it : Lorem \n ipsum "
             )
             listaTareas.add(tarea)
-        })
+        }
         _tareasStateFlow.value = listaTareas
     }
     //Permite iniciar el objeto Singleton
@@ -78,6 +78,4 @@ object TempModelTareas {
         //this.application= context.applicationContext as Application
         iniciaPruebaTareas()
     }
-
-
 }

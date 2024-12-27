@@ -7,7 +7,7 @@ data class UiStateTarea(
     val prioridad: String = "",
     val isPaid: Boolean = false,
     val estadoTarea: String = "",
-    val rating: Int = 0,
+    val rating: Int = 3,
     val technicianName: String = "",
     val description: String = "",
     val colorFondo: androidx.compose.ui.graphics.Color = androidx.compose.ui.graphics.Color.Transparent,
