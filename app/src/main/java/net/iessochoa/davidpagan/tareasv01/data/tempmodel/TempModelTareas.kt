@@ -40,7 +40,7 @@ object TempModelTareas {
     }
     //obtiene una tarea a partir de su id
     fun getTarea(id: Long): Tarea? {
-        return listaTareas.find { it.id == id }
+        return listaTareas.find { it.id == id +1 }
     }
     /**
      * Crea unas Tareas de prueba de forma aleatoria.
@@ -58,7 +58,7 @@ object TempModelTareas {
         val fotos=
             listOf(R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background)
         lateinit var tarea: Tarea
-        (1..10).forEach {
+        (0..10).forEach {
             tarea = Tarea(
                 (0..4).random(),
                 (0..2).random(),

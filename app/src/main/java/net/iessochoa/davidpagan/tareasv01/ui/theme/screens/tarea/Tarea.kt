@@ -15,6 +15,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.ShoppingCart
@@ -199,17 +201,26 @@ fun TaskScreen(
                         Icon(
                             imageVector = icon,
                             contentDescription = stringResource(R.string.estado_de_pago),
-
                             )
                         Text(stringResource(R.string.est_pagado))
                         Switch(checked = isPaid, onCheckedChange = { isPaid = it })
                     }
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(stringResource(R.string.estado_de_la_tarea))
-                        Icon(
-                            imageVector = iconEstadoTarea,
-                            contentDescription = "Estado de la tarea",
-                            )
+                        when (uiState.estadoTarea) {
+                            viewModel.listaEstado[0] -> Icon(
+                                imageVector = Icons.Default.FavoriteBorder,
+                                contentDescription = null,
+                                modifier = Modifier.padding(8.dp))
+                            viewModel.listaEstado[1] -> Icon(
+                                imageVector = Icons.Default.DateRange,
+                                contentDescription = null,
+                                modifier = Modifier.padding(8.dp))
+                            viewModel.listaEstado[2] -> Icon(
+                                imageVector = Icons.Default.Lock,
+                                contentDescription = null,
+                                modifier = Modifier.padding(8.dp))
+                        }
                     }
 
                     // Estado de la tarea
