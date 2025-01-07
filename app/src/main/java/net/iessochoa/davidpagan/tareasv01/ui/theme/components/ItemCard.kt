@@ -38,7 +38,7 @@ fun ItemCard(
     prioridad: String,
     modifier: Modifier = Modifier) {
     val color = when(prioridad) {
-        "Alta" -> Color.Red
+        "2" -> Color.Red
         else -> Color.White
     }
     Card(
@@ -68,13 +68,11 @@ fun ItemCard(
                         fontSize = 15.sp
                     )
                 }
-
                 Text(
                     text = mecanico,
                     modifier = Modifier.padding(5.dp,0.dp),
                     style = MaterialTheme.typography.headlineSmall,
                     fontSize = 20.sp
-
                 )
                 Text(
                     text = descripcion,
@@ -83,7 +81,6 @@ fun ItemCard(
                     modifier = Modifier.padding(5.dp,5.dp),
                     style = MaterialTheme.typography.headlineSmall,
                     fontSize = 15.sp
-
                 )
             }
         }

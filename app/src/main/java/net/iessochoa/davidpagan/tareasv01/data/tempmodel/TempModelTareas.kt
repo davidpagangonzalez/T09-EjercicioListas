@@ -67,7 +67,7 @@ object TempModelTareas {
                 (0..2).random(),
                 (0..5).random(),
                 tecnicos.random(),
-                "tarea $it : Lorem \n ipsum "
+                "tarea $it : Lorem cosa cosa cosa pero mucho se dise jajaja ipsum IPS ALONG LOLOL XD "
             )
             listaTareas.add(tarea)
         }
